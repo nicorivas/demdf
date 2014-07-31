@@ -1,7 +1,7 @@
 demdf
 =====
 
-Discrete element method simulations data format specification.
+The Discrete Element Method Data Format (DEMDF) project is an specification of a common data format for DEM simulations.
 
 The DEMDF project aims to stablish an standard of configuration files for particle simulations.
 The goal of the DEMDF project is to decouple the data handling/simulation specification from the

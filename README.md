@@ -5,7 +5,7 @@ The Discrete Element Method Data Format (DEMDF) project is an specification of a
 
 The DEMDF project aims to stablish an standard of configuration files for particle simulations.
 The goal of the DEMDF project is to decouple the data handling/simulation specification from the
-numerical methods of integration specific to the many DEM implementations now available.
+numerical methods of integration, which are specific to the many DEM implementations now available.
 This would dramatically increase the felixibility of DEM simulations, and allow for easy validation of
 numerical codes by making the comparisson between them direct.
 Furthermore, the standarization of the configuration files would facilitate the writing of 

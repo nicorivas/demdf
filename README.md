@@ -31,11 +31,10 @@ This is the complete JSON schema:
             "exclusiveMinimum": true
         },
         "particles": {
-            "type": "object",
-            "properties": {
-                "x": {"type": "number"},
-                "y": {"type": "number"},
-                "z": {"type": "number"}
+            "type": "array",
+            "items": {
+                "type": "array",
+                "items": [{"type":number},{"type":number},{"type":number}]
             }
         }
     },

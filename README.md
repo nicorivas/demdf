@@ -30,13 +30,13 @@ This is the complete JSON schema:
             "minimum": 0,
             "exclusiveMinimum": true
         },
-        "tags": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            },
-            "minItems": 1,
-            "uniqueItems": true
+        "particles": {
+            "type": "object",
+            "properties": {
+                "x": {"type": "number"},
+                "y": {"type": "number"},
+                "z": {"type": "number"}
+            }
         }
     },
     "required": ["id", "name", "price"]

@@ -25,7 +25,7 @@ This is the complete JSON schema:
             "description": "Name of the simulation",
             "type": "string"
         },
-        "price": {
+        "endTime": {
             "type": "number",
             "minimum": 0,
             "exclusiveMinimum": true

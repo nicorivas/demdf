@@ -17,16 +17,12 @@ This is the complete JSON schema:
 ```
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Product",
-    "description": "A product from Acme's catalog",
+    "title": "DEM Simulation",
+    "description": "Specification of a Discrete Elemet Method (DEM) simulation",
     "type": "object",
     "properties": {
-        "id": {
-            "description": "The unique identifier for a product",
-            "type": "integer"
-        },
         "name": {
-            "description": "Name of the product",
+            "description": "Name of the simulation",
             "type": "string"
         },
         "price": {

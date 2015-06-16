@@ -10,3 +10,39 @@ This would dramatically increase the felixibility of DEM simulations, and allow 
 numerical codes by making the comparisson between them direct.
 Furthermore, the standarization of the configuration files would facilitate the writing of 
 data analysis routines that could be used without effort indepeendent of the integration code used.
+
+DEMDF is based on the JSON data format, and simply specifies common names, and a few other things.
+This is the complete JSON schema:
+
+```
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Product",
+    "description": "A product from Acme's catalog",
+    "type": "object",
+    "properties": {
+        "id": {
+            "description": "The unique identifier for a product",
+            "type": "integer"
+        },
+        "name": {
+            "description": "Name of the product",
+            "type": "string"
+        },
+        "price": {
+            "type": "number",
+            "minimum": 0,
+            "exclusiveMinimum": true
+        },
+        "tags": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+        }
+    },
+    "required": ["id", "name", "price"]
+}
+```

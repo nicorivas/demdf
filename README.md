@@ -11,6 +11,8 @@ numerical codes by making the comparisson between them direct.
 Furthermore, the standarization of the configuration files would facilitate the writing of 
 data analysis routines that could be used without effort indepeendent of the integration code used.
 
+It only supports 2 and 3 dimensions.
+
 DEMDF is based on the JSON data format, and simply specifies common names, and a few other things.
 This is the complete JSON schema:
 

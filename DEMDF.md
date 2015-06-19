@@ -1,1 +1,1 @@
-# Discerete Element Method Data Format specification
+# DEMDF specification

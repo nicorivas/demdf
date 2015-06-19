@@ -18,9 +18,9 @@ We provide:
  * A minimal and simple validation Python script that checks the validity of the configuration files using the JSON Schema.
  * Sample configuration files for several simulations.
 
-## Features
+### Features
 
-## Limitations
+### Limitations
 
 It only supports 2 and 3 dimensions.
 

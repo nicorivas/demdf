@@ -1,0 +1,63 @@
+{
+    "fileFormat": "demdf",
+    "name": "holi",
+    "dimensionality": 3,
+    "time": 0,
+    "timeEnd": 20,
+    "timeStep": 0.001,
+    "timeStepCount": 0,
+    "timeStepCountEnd": 1,
+    "eventCount": 0,
+    "eventCountEnd": 1000,
+    "output": [
+        {
+            "name": "demdf",
+            "filename": "output",
+            "saveCount": 0,
+            "savePeriodInTimeSteps": 100,
+            "savePeriodInTime": 0.1
+        }
+    ],
+    "particles": [
+        [1.1, 1.1, 2.4, 1.2, -1.3,0.0],
+        [2.1, 1.1, 2.4, 1.1, 1.4, 0.0],
+        [3.1, 1.1, 2.4, 0.9, 1.2, 0.0],
+        [4.1, 1.1, 2.4, 1.2, 1.1, 0.0],
+        [1.1, 2.1, 2.4, 1.0, 1.0, 0.0]
+    ],
+    "particleRadius": 0.5,
+    "walls": [
+        {
+            "normal": [1.0, 0.0, 0.0],
+            "point": [0.0, 0.0, 0.0],
+            "typename": "wallElastic"
+        },
+        {
+            "normal": [-1.0, 0.0, 0.0],
+            "point": [5.0, 0.0, 0.0],
+            "typename": "wallElastic"
+        },
+        {
+            "normal": [0.0, 1.0, 0.0],
+            "point": [0.0, 0.0, 0.0],
+            "typename": "wallElastic"
+        },
+        {
+            "normal": [0.0, -1.0, 0.0],
+            "point": [0.0, 5.0, 0.0],
+            "typename": "wallElastic"
+        },
+        {
+            "normal": [0.0, 0.0, 1.0],
+            "point": [0.0, 0.0, 0.0],
+            "typename": "wallElastic"
+        },
+        {
+            "normal": [0.0, 0.0, -1.0],
+            "point": [0.0, 0.0, 5.0],
+            "typename": "wallElastic"
+        }
+    ],
+    "domain": [[0.0, 0.0, 0.0],[5.0, 5.0, 5.0]],
+    "bodyForce": [0.0, 0.0, 0.0]
+}

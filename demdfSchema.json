@@ -12,7 +12,7 @@
             "type": "string"
         },
         "dimensionality": {
-            "descriptions": "Number of spatial degrees of freedom of particles",
+            "description": "Number of spatial degrees of freedom of particles",
             "type": "integer",
             "minimum": 2,
             "maximum": 3
@@ -64,6 +64,7 @@
                 }]
         },
         "bodyForce": {
+            "description": "External body force",
             "type": "array",
             "minItems": 3,
             "maxItems": 3,
@@ -71,6 +72,7 @@
             "items": {"type":"number", "type":"number", "type":"number"}
         },
         "walls": {
+            "description": "Array with walls",
             "type": "array",
             "items": {
                 "type":"object",
@@ -96,6 +98,7 @@
             }
         },
         "particles": {
+            "description": "Array with particles",
             "type": "array",
             "items": {
                 "type": "array",

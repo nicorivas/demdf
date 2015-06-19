@@ -1,8 +1,8 @@
 import json
 import jsonschema
 
-data = open('schema.json').read()
+data = open('demdfSchema.json').read()
 fj = json.loads(data)
 
-out = open('schema.md','w')
+out = open('DEMDF.md','w')
 out.write('#'+fj['title'])

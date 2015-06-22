@@ -23,3 +23,7 @@ We provide:
 ### Limitations
 
 It only supports 2 and 3 dimensions.
+
+### Contributing
+
+The DEMDF project is now on its early stages and would highly benefit from support from the DEM community. If you have, manage or contribute to a particle simulation code, and would like to add support for the DEMDF format, please feel free to contact us. If you would like to comment or participate regularly in the development of the DEMDF file format specification, you will be more than welcome!

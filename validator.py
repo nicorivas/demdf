@@ -1,7 +1,7 @@
 import json
 import jsonschema
  
-schema = open("schema.json").read()
+schema = open("demdfSchema.json").read()
 #print schema
  
 data = open("test.json").read()

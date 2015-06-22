@@ -4,11 +4,22 @@
     "description": "Specification of a Discrete Elemet Method (DEM) simulation",
     "type": "object",
     "id": "schemata/demdf",
-    "title": "Lalala - lala",
+    "title": "Discrete element method data format specification",
     "type": ["object"],
     "properties": {
+        "fileFormat": {
+            "description": "Name of data format; always demdf",
+            "use": "Intended for verification of the validity of the file",
+            "type": "string"
+        },
+        "fileFormatVersion": {
+            "description": "Version of the DEMDF specification being used",
+            "use": "Format names and structure will change, so knowing the version being read becomes neccessary",
+            "type": "number"
+        },
         "name": {
             "description": "Name of the simulation",
+            "use": "The name of the simulation should serve as a human readable reference to the specific simulation. It should not be used for the generation of directories, as simulations could consist of several directories, and a general name is more flexible than directory names",
             "type": "string"
         },
         "dimensionality": {
@@ -33,19 +44,35 @@
             "type": "number",
             "minimum": 0
         },
-        "timeStepNumber": {
-            "description": "How many time-steps have been realized",
+        "timeStepCount": {
+            "description": "How many time-steps have been realized since the beginning of the simlation",
             "type": "integer",
             "minimum": 0
         },
-        "timeStepNumberEnd": {
+        "timeStepCountEnd": {
             "description": "Number of time-steps at which the simulation should stop",
             "type": "integer",
             "minimum": 0,
             "exclusiveMinimum": true
         },
+        "eventCount": {
+            "description": "How many events have been processed since the beginning of an event-driven simulation",
+            "type": "integer",
+            "minimum": 0
+        },
+        "eventCountEnd": {
+            "description": "Number of events at which the simulation should stop",
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
+        },
+        "output": {
+            "description": "Object containing the list of output routines, such as measurements and including demdf files",
+            "type": "object"
+        },
         "domain": {
             "description": "Two D-vectors specifying the opposite vertices of a square that defines the system's domain",
+            "use": "The domain defines the region in space where objects are allowed to be. Any object outside the domain should result in a error. This can be used for the generation of grids or the inclusion or periodic boundary conditions, etc.",
             "type": "array",
             "items": [
                 {
@@ -64,74 +91,92 @@
                 }]
         },
         "bodyForce": {
-            "description": "External body force",
+            "description": "An external body force",
+            "longDescription": "It should be specified as a D-vector which results a in a force in simulational units being applied to all objects",
             "type": "array",
             "minItems": 3,
             "maxItems": 3,
             "additionalItems": false,
             "items": {"type":"number", "type":"number", "type":"number"}
         },
-        "walls": {
-            "description": "Array with walls",
+        "objectTypes": {
             "type": "array",
+            "description": "An array of objects specifying the properties of each type of object.",
+            "longDescription": "Object types exist to reduce the amount of data saved on the particle list, as all particle properties (with the exception of position and velocity, stored in the 'particles' list) can be stored in an objectType and thus only referenced by the objectType id.",
+            "use": "Every particle should have an objectType identifier, and the corresponding properties stored by the objectType. For example, the radius of particle [0.1, 0.5, 0.3, 8.1, 2.3, 5.1, 10] is stored in the objectType 10."
+        },
+        "objects": {
+            "type": "object",
+            "description": "Object of objects, containing the lists of walls and particles.",
             "items": {
-                "type":"object",
-                "properties": {
-                    "normal": {
+                "walls": {
+                    "description": "Array with walls",
+                    "type": "array",
+                    "items": {
+                        "type":"object",
+                        "properties": {
+                            "normal": {
+                                "type": "array",
+                                "minItems": 3,
+                                "maxItems": 3,
+                                "additionalItems": false,
+                                "items": {"type":"number", "type":"number", "type":"number"}
+                            },
+                            "point": {
+                                "type": "array",
+                                "minItems": 3,
+                                "maxItems": 3,
+                                "additionalItems": false,
+                                "items": {"type":"number", "type":"number", "type":"number"}
+                            },
+                            "typename": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "particles": {
+                    "description": "List of arrays with particles' position, velocity and type",
+                    "longDescription": "Data should be of the form [[x-position, y-position, z-position, x-velocity, y-velocity, z-velocity, type], ...], with the amount of coordinates actually depending on the dimensionality.",
+                    "type": "array",
+                    "items": {
                         "type": "array",
-                        "minItems": 3,
-                        "maxItems": 3,
                         "additionalItems": false,
-                        "items": {"type":"number", "type":"number", "type":"number"}
-                    },
-                    "point": {
-                        "type": "array",
-                        "minItems": 3,
-                        "maxItems": 3,
-                        "additionalItems": false,
-                        "items": {"type":"number", "type":"number", "type":"number"}
-                    },
-                    "typename": {
-                        "type": "string"
+                        "minItems": 6,
+                        "maxItems": 6,
+                        "items": [
+                            {
+                                "description": "x-coordinate",
+                                "type": "number"
+                            },
+                            {
+                                "description": "y-coordinate",
+                                "type": "number"
+                            },
+                            {
+                                "description": "z-coordinate",
+                                "type": "number"
+                            },
+                            {
+                                "description": "velocity x-component",
+                                "type": "number"
+                            },
+                            {
+                                "description": "velocity y-component",
+                                "type": "number"
+                            },
+                            {
+                                "description": "velocity z-component",
+                                "type": "number"
+                            }
+                        ]
                     }
                 }
             }
         },
-        "particles": {
-            "description": "Array with particles",
-            "type": "array",
-            "items": {
-                "type": "array",
-                "additionalItems": false,
-                "minItems": 6,
-                "maxItems": 6,
-                "items": [
-                    {
-                        "description": "x-coordinate",
-                        "type": "number"
-                    },
-                    {
-                        "description": "y-coordinate",
-                        "type": "number"
-                    },
-                    {
-                        "description": "z-coordinate",
-                        "type": "number"
-                    },
-                    {
-                        "description": "velocity x-component",
-                        "type": "number"
-                    },
-                    {
-                        "description": "velocity y-component",
-                        "type": "number"
-                    },
-                    {
-                        "description": "velocity z-component",
-                        "type": "number"
-                    }
-                ]
-            }
+        "interactions": {
+            "description": "Array of objects, each object containing the description of the interaction between the different objectTypes",
+            "type": "array"
         }
     }
 }

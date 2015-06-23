@@ -1,10 +1,9 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "DEM Simulation",
-    "description": "Specification of a Discrete Elemet Method (DEM) simulation",
+    "title": "Discrete Element Method File Format (DEMDF) specification.",
+    "description": "The following document describes the Discrete Element Method File Format (DEMDF), a common file format for particle simulations. DEMDF is built upon the JavaScript Object Notation (JSON) data-interchange format; we refer the readers to [http://json.org/](http://json.org/) for the JSON data format specification. The JSON data format is used mainly due to its minimal formating and thus excellent human readibility, and due to the widespread availability of parsers in many programming lenguages.\n\nDEMDF specifies the name, data types, uses and limits of common variables to all Discrete Element Method simulations. Its goals are flexibility, that is, the ability to be used by most types of particle simulations; low size, by reducing as much as possible repeated data; and readability.",
     "type": "object",
     "id": "schemata/demdf",
-    "title": "Discrete element method data format specification",
     "type": ["object"],
     "properties": {
         "fileFormat": {
@@ -71,8 +70,9 @@
             "type": "object"
         },
         "domain": {
-            "description": "Two D-vectors specifying the opposite vertices of a square that defines the system's domain",
-            "use": "The domain defines the region in space where objects are allowed to be. Any object outside the domain should result in a error. This can be used for the generation of grids or the inclusion or periodic boundary conditions, etc.",
+            "description": "An array of two arrays of size D, specifying the opposite vertices of a square that defines the system's domain",
+            "use": "The domain defines the region in space where objects are allowed to be. Any object outside the domain should result in an error. It's main use is avoiding unexpected behaviour by limiting the available space for particles. Notice that the wall objects and the grid are not neccessarily specified by the domain.",
+            "format": "[[x1,y1,z1],[x2,y2,z2]] for 3 dimensions.",
             "type": "array",
             "items": [
                 {

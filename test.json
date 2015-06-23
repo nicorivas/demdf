@@ -3,7 +3,7 @@
     "fileFormatVersion": 0.01,
     "name": "Name of simulation",
     "dimensionality": 3,
-    "time": 0,
+    "time": 0.0,
     "timeEnd": 20,
     "timeStep": 0.001,
     "timeStepCount": 0,
@@ -84,6 +84,13 @@
         {
             "name": "wallElastic",
             "objectTypes": [0, 1]
+        },
+        {
+            "name": "linearViscoelasticSpecies",
+            "objectTypes": [0, 0],
+            "density": 2000,
+            "dissipation": 0.005,
+            "stiffness": 1e+5
         }
     ]
 }

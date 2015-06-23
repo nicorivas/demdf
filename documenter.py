@@ -12,14 +12,16 @@ out.write('\n')
 out.write('## Properties'+'\n')
 for key, value in fj['properties'].items():
     #print(value['description'])
-    out.write(' * `'+key+'`: ')
-    out.write(value['description']+'\n\n')
+    out.write(' * ###'+key+'\n\n ')
+    out.write('*'+value['description']+'.*\n\n')
     if 'longDescription' in value.keys():
         out.write(' '+value['longDescription']+'\n\n')
     print(value.keys())
     if 'use' in value.keys():
         out.write(' '+value['use']+'\n\n')
     out.write(' Type: '+value['type']+'\n\n')
+    if 'format' in value.keys():
+        out.write(' Format: `'+value['format']+'`\n\n')
     if (value['type'] in ("integer","number")):
         out.write(' range: ')
         if 'minimum' in value:
